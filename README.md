@@ -7,6 +7,8 @@
     * helloWorld: ilustra la selección de dispositivos
     * Suma de vectores: suma de vectores
     * Migración de código CUDA a SYCL (suma vectores)
+    * Entrenamiento e inferencia optimizado mediante las [Intel Extension for PyTorch](https://intel.github.io/intel-extension-for-pytorch/#introduction)
+
 
 * La descripción del [Hands-on](#to-do) se puede consultar a final de este fichero
     * Tratamiento de imágenes: reducción de ruido tipo sal & pimienta
@@ -238,7 +240,7 @@ user@localhost:~$ ssh myidc -L 8888:10.10.10.8:8888
 ```c
 int main(int argc, char **argv) {
 
-	auto d = sycl::device(sycl::gpu_selector_v);
+	auto d = sycl::device(sycl::default_selector_v);
 	std::cout << "Using " << d.get_info<sycl::info::device::name>() << "\n";
 
 	sycl::queue Q(d);
@@ -262,6 +264,7 @@ int main(int argc, char **argv) {
 ```
 
 * Para compilar los código existe un fichero [Makefile](helloWorld/Makefile) que invocando **make** en consola genera el ejecutable **exec**
+   * Se puede elegir el dispositivo mediante la variable de entorno *ONEAPI_DEVICE_SELECTOR* con los dispositivos disponibles con el comando ```sycl-ls```
 
 ```bash
 user@host:~/ $ make
@@ -270,10 +273,25 @@ icpx -o exec main.o -I. -fsycl
 user@host:~/ $ ls
 exec  main.cpp  main.o  Makefile
 
-user@host:~/ $ ./exec 
-Using Intel(R) UHD Graphics 620
+user@host:~/ $ sycl-ls 
+Warning: ONEAPI_DEVICE_SELECTOR environment variable is set to opencl:*;level_zero:1.
+To see the correct device id, please unset ONEAPI_DEVICE_SELECTOR.
+[opencl:acc:0] Intel(R) FPGA Emulation Platform for OpenCL(TM), Intel(R) FPGA Emulation Device 1.2 [2023.16.7.0.21_160000]
+[opencl:cpu:1] Intel(R) OpenCL, Intel(R) Xeon(R) Platinum 8480+ 3.0 [2023.16.7.0.21_160000]
+[opencl:gpu:2] Intel(R) OpenCL Graphics, Intel(R) Data Center GPU Max 1100 3.0 [23.22.26516.29]
+[opencl:gpu:3] Intel(R) OpenCL Graphics, Intel(R) Data Center GPU Max 1100 3.0 [23.22.26516.29]
+[opencl:gpu:4] Intel(R) OpenCL Graphics, Intel(R) Data Center GPU Max 1100 3.0 [23.22.26516.29]
+[opencl:gpu:5] Intel(R) OpenCL Graphics, Intel(R) Data Center GPU Max 1100 3.0 [23.22.26516.29]
+[ext_oneapi_level_zero:gpu:0] Intel(R) Level-Zero, Intel(R) Data Center GPU Max 1100 1.3 [1.3.26516]
+
+user@host:~/ $ ONEAPI_DEVICE_SELECTOR=opencl:1 ./exec
+Using Intel(R) Xeon(R) Platinum 8480+
+Hello, World!
+user@host:~/ $ ONEAPI_DEVICE_SELECTOR=opencl:2 ./exec
+Using Intel(R) Data Center GPU Max 1100
 Hello, World!
 ```
+
 ### ToDo
 * Se recomienda experimentar con el cambio de **selector** para seleccionar CPU/GPU...
 
@@ -399,6 +417,18 @@ uXXXX@idc-beta-batch-pvc-node-04:~$  ./vector
 482 484 486 488 490 492 494 496 498 500 502 504 506 508 510 512 
 
 ```
+
+## Entranamiento e Inferencia optimizado en PyTorch
+* Intel incrementa el rendimiento en las CPUs y GPUSs mediante la Extensión 
+* Código abierto en GitHub
+    * [CPU](https://github.com/intel/intel-extension-for-pytorch/tree/cpu-master): Código y [documentación](https://intel.github.io/intel-extension-for-pytorch/cpu/latest/)
+    * [GPU](https://github.com/intel/intel-extension-for-pytorch/tree/xpu-master): Código y [documentación](https://intel.github.io/intel-extension-for-pytorch/xpu/latest/)
+
+![Imagen](figures/Intel-Extension-for-PyTorch-structure.png)
+
+* El [cuaderno de Jupyter](ipex/IntelPyTorch_GPU_InferenceOptimization_with_AMP/IntelPyTorch_GPU_InferenceOptimization_with_AMP.ipynb) muestra un ejemplo de entrenamiento de la red [ResNet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html) en PyTorch, pudiendo realizar el entrenamiento en CPU, CPU (AMX), GPU(FP32/BF16)
+     * Se evalua el rendimiento y la precisión del modelo entrenado
+     * NOTA: para ser ejecutado en el Intel Developer Cloud se debe seleccionar en el entorno **pytorch-gpu**
 
 # To-Do
 ## Tratamiento de imágenes

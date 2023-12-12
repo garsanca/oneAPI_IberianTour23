@@ -1,90 +1,90 @@
 # oneAPI_IberianTour23
 
-## Contenidos
-* En este repositorio se encuentran los códigos propuestos en el taller [oneAPI-Day: Intel oneAPI Iberian Tour](https://www.danysoft.com/intel-software-iberian-tour/)
-* Para poner a punto el taller se recomienda seguir los pasos de la sección [Setup del lab](#setup-del-lab)
-* Los códigos que vamos a trabajar están disponibles en la [sección "Ejemplos"](#ejemplos), resumidamente trabajan algunos de los aspectos mostrados en la parte teórica:
-    * helloWorld: ilustra la selección de dispositivos
-    * Suma de vectores: suma de vectores
-    * Migración de código CUDA a SYCL (suma vectores)
-    * Entrenamiento e inferencia optimizado mediante las [Intel Extension for PyTorch](https://intel.github.io/intel-extension-for-pytorch/#introduction)
+## Contents
+* In this repository, you will find the codes proposed in the workshop [oneAPI-Day: Intel oneAPI Iberian Tour](https://www.danysoft.com/intel-software-iberian-tour/)
+* To set up the workshop, it is recommended to follow the steps in the [Setup del lab](#setup-del-lab) section
+* The codes we will work on are available in the [section "Examples"](#examples). Briefly, they cover some of the aspects shown in the theoretical part:
+    * helloWorld: illustrates the selection of devices
+    * vector add: sum of vectors
+    * Migration of CUDA code to SYCL (vector sum)
+    * Optimized training and inference using [Intel Extension for PyTorch](https://intel.github.io/intel-extension-for-pytorch/#introduction)
 
 
-* La descripción del [Hands-on](#to-do) se puede consultar a final de este fichero
-    * Tratamiento de imágenes: reducción de ruido tipo sal & pimienta
-    * Migración de código CUDA a SYCL (uso de librería *cuBLAS*)
+* The description of the [Hands-on](#to-do) can be consulted at the end of this file
+    * Image processing: salt & pepper noise reduction
+    * Migration of CUDA code to SYCL (using the *cuBLAS* library)
 
 # Setup del lab
 ## Repositorio 
-* Puede descargarse fácilmente clonando el repositorio ejecutando en un terminal el comando ```git clone https://github.com/garsanca/oneAPI_IberianTour23```
+* It can be easily downloaded by cloning the repository using the command  ```git clone https://github.com/garsanca/oneAPI_IberianTour23```
 
-## Transparencias
-* Todo el material está disponible en el repositorio en la carpeta [Slides](Slides/)
+## Slides
+* All the material is available in the repository in the [Slides](Slides/)
    
    
-## Cuenta en Intel Developer Cloud
-* El [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html) es un espacio de desarrollo **gratuito** para que la comunidad de desarrolladores puedan programar aplicaciones. 
+## Intel Developer Cloud Account
+* The [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html) is a free development workspace for the developer community to program applications
 
 ![Imagen](figures/Intel-IDC.png)
 
 
-### Hardware disponible
-* Se puede testear y evaluar una variedad de máquinas virtuales
-    * Sistemas *bare metal*
-    * Dispositivos en el Edge
-    * Plataformas para entrenamiento de IA
-* Entornos para desarrollo
-    * Contenedores
+### Available Hardware
+* You can test and evaluate various virtual machines.
+    * Bare metal systems.
+    * Edge devices
+    * Platforms for AI training
+* Development environments
+    * Containers
     * JupyterLabs
-    * Conexión directa por SSH
+    * Direct SSH connection
     
 ![Imagen](figures/Intel-IDC-HW.png)
 
-### Instrucciones de acceso
-* La documentación y actualizaciones disponible en [https://tinyurl.com/ReadmeIDC](https://tinyurl.com/ReadmeIDC) o en el [Readme.md](https://github.com/bjodom/idc)
+### Access Instructions
+* Documentation and updates are available at [https://tinyurl.com/ReadmeIDC](https://tinyurl.com/ReadmeIDC) or in the [Readme.md](https://github.com/bjodom/idc)
 
 ![Imagen](figures/Intel-IDC-connection.png)
 
-### Registro
-* Para disponer de cuenta en [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html) se puede acceder seguir el enlace http://cloud.intel.com
-* Siguiendo los pasos del proceso de registro:
+### Register
+* To have an account on the [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html) you can access the link [http://cloud.intel.com](http://cloud.intel.com)
+* Follow the registration process steps:
 
 ![Imagen](figures/IDC/277368799-4a20d662-c2ff-4cca-8fb5-96d02e84e1f7.png)
 
-1. Selección de **usuario Stardard**
-2. Creación de cuenta
+1. Select the **Stardard User**
+2. Account creation
 
 ![Imagen](figures/IDC/277369292-4329a3fc-439f-45f3-96d4-ed4ae74ba5dc.png)
 
-3. Introducción de datos personales
+3. Introduction of personal data
 
 ![Imagen](figures/IDC/252710203-3f17e5ba-5645-44d4-a9b9-4107ab3e4d1d.png)
 
-4. Verificación de correo mediante envío de email con un **código**
+4. Verification of email by sending an email with a **code**
 
-5. Aceptación de [términos y condiciones de uso](https://scheduler.cloud.intel.com/public/intel_developer_cloud_access_agreement.html) del Intel® Developer Cloud
+5. Acceptance the [terms and conditions of use](https://scheduler.cloud.intel.com/public/intel_developer_cloud_access_agreement.html) of the Intel® Developer Cloud
 
-### Acceso
-* Para acceder a la cuenta en [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html)
-    * Clicar en **Already a Member? Sign In** e introducir las credenciales creadas anteriormente
-* O bien se puede hacer con el "atajo" https://console.cloud.intel.com/
+### Access
+* To access the account on [Intel® Developer Cloud](https://www.intel.com/content/www/us/en/developer/tools/devcloud/services.html)
+    * Click on **Already a Member? Sign In** and enter the credentials
+* Alternatively, you can use the "shortcut": https://console.cloud.intel.com/
 
 
 
 ![Imagen](figures/Intel-IDC-console.png)
 
 ### Training
-* JupyterLabs: en el menú **Training and Workshops**
-    * Clicar en **LaunchJupyterLab**
+* JupyterLabs:  in the **Training and Workshops** menu
+    * Click at **LaunchJupyterLab**
 
 ![Imagen](figures/Intel-IDC-JupyterLabs.png)
 
-* SSH: se puede conectar al IDC vía ssh previamente añadiendo las [*Account Keys*](https://console.cloud.intel.com/security/publickeys)
+* SSH: you can connect to the IDC via SSH by adding the [*Account Keys*](https://console.cloud.intel.com/security/publickeys)
 
 ![Imagen](figures/Intel-IDC-publickeys.png)
 
-#### Configuración SSH
-* Modificar el fichero *.ssh/config*
+#### SSH configuration
+* Modify the file *.ssh/config*
 
 ```bash
 Host myidc #←YOU CAN CALL IT ANYTHING
@@ -97,9 +97,9 @@ StrictHostKeyChecking no # Frequent changes in the setup are taking place now, t
 UserKnownHostsFile=/dev/null
 ```
 
-* En nodo *frontend* o *head* es un Ubuntu 22.04LTS
-* Uso de nodo en modo interactivo: *srun --pty bash*
-    * Nodo con Intel Data Center GPU Max 1100
+* The *frontend* or *head* node is a Ubuntu 22.04LTS
+* Interactive mode with the command: *srun --pty bash*
+    * Node with an Intel Data Center GPU Max 1100
 
 ``` bash 
 user@localhost:~$ ssh myidc
@@ -120,15 +120,15 @@ To see the correct device id, please unset ONEAPI_DEVICE_SELECTOR.
 [ext_oneapi_level_zero:gpu:0] Intel(R) Level-Zero, Intel(R) Data Center GPU Max 1100 1.3 [1.3.26516]
 ```
 
-### Comandos Slurm 
-* *sinfo*: obtener información de los nodos disponibles
-* *squeue*: trabajos encolados
-* *sbatch -p {PARTITION-NAME} {SCRIPT-NAME}*: encolar trabajo en las colas
-* *scancel {JOB-ID}*: cancelar trabajo 
-* *srun --pty bash*: lanzamiento de trabajo de forma interactiva
+### Most common Slurm commands
+* *sinfo*: get info of the available nodes
+* *squeue*: en-queue jobs
+* *sbatch -p {PARTITION-NAME} {SCRIPT-NAME}*: to queue a job 
+* *scancel {JOB-ID}*: cancel a job
+* *srun --pty bash*: launch an interactive session
 
-### Ejemplo lanzamiento job
-1. Tomemos como ejemplo un código en SYCL que devuelve el **device** seleccionado en este caso una GPU
+### Example of code
+1. Take as an example a code written in SYCL that gives a message with the features of the **device** selected.
 ```c
 #include <sycl/sycl.hpp>
 using namespace sycl;
@@ -141,12 +141,12 @@ int main() {
 }
 ```
 
-2. Podemos compilarlo con el compilador icpx
+2. It is possible to compile with the **icpx** compiler
 ```bash
 uXXXX@idc-beta-batch-pvc-node-03:~$ icpx -o ex exampleSYCL.cpp -fsycl
 ```
 
-3. Lanzar job mediante slurm
+3. Creating a job file
 ```job
 #!/bin/bash
 #SBATCH --job-name=gpu_run
@@ -160,19 +160,19 @@ icpx -o ex exampleSYCL.cpp -fsycl
 ./ex
 ```
 
-4. Lanzamos el job y visualizamos salida
+4. Launching a job with slum y checking the output
 ```bash
 uXXXX@idc-beta-batch-head-node:~$ sbatch job.sh
 uXXXX@idc-beta-batch-head-node:~$ more job.42151.out 
 Device: Intel(R) Data Center GPU Max 1100
 ```
 
-### Lanzar Jupyterlab interactivo
-1. Conexión por ssh al nodo *head-node*: *ssh myidc*
-2. Lanzar sesión interactiva: *srun --pty bash*
-3. Activar el entorno conda para poder lanzar Jupyter-Lab: *conda activate pytorch_xpu*
-4. Lanzar Jupyterlab
-    * Importante buscar la dirección de escucha del Jupyterlab, algo parecido a *http://10.10.10.X:8888/lab?token=9d83e1d8a0eb3ffed84fa3428aae01e592cab170a4119130*
+### Launching Jupyter notebook as interactive mode
+1. Connect to the *head-node*: *ssh myidc*
+2. Launch an interactive session: *srun --pty bash*
+3. Activate the *conda* environment to be able to run a Jupyter-Lab: *conda activate pytorch_xpu*
+4. Launch Jupyterlab
+    * Important: search for the address where the Jupyterlab is listen, something such as *http://10.10.10.X:8888/lab?token=9d83e1d8a0eb3ffed84fa3428aae01e592cab170a4119130*
 
 ```bash
 user@localhost:~$ ssh myidc
@@ -185,19 +185,19 @@ uXXXX@idc-beta-batch-pvc-node-03:~$ conda activate pytorch-gpu
 ....
 ```
 
-5. Desde otro **terminal local** hacer un tunel ssh a la dirección que aparece en la consola lanzada: **10.10.10.X**
+5. From other **local terminal** create a ssh tunnel to the address shown in the console: **10.10.10.X**
 
 ```bash
 user@localhost:~$ ssh myidc -L 8888:10.10.10.8:8888
 ```
 
-6. Conectarse con un navegador a la dirección local: **https://localhost:8888** e introducir el **token** que aparece en el ejemplo en este ejemplo *f25e4d3977b7b059d5ff4b376085562dbbaa3f9dffed4fde*
+6. Connect with the browser to the local address: **https://localhost:8888** and enter the **token** code as in the example, for this particular case the token *f25e4d3977b7b059d5ff4b376085562dbbaa3f9dffed4fde*
 
-### Instancias en IDC
+### Instances in IDC
 * Core compute
-    * Basada en procesador Xeon 4th gen
-       * VMs con 8, 16, 32 cores
-       * Bare Metal 112 cores, 256GB y 2TB disco
+    * Based on Xeon 4th gen processor
+       * VMs with 8, 16, 32 cores
+       * Bare Metal 112 cores, 256GB y 2TB disc
 * Intel Max GPU
     * 4xGPUs 1100 + 2xsockets Xeon 4th gen
 * Gaudi Deep Learning Server
@@ -206,20 +206,20 @@ user@localhost:~$ ssh myidc -L 8888:10.10.10.8:8888
 ![Imagen](figures/Intel-IDC-instances.png)
 
 
-### Lanzar instancia
-1. Lanzar instancia en la [consola->Hardware Catalog](https://console.cloud.intel.com/hardware)
-2. Obtener la forma desde el apartado de [reservas](https://console.cloud.intel.com/compute/myreservations), por ejemplo mediante conexión ssh
+### Instance launch
+1. To create an instance, enter in the [consola->Hardware Catalog](https://console.cloud.intel.com/hardware)
+2. You can obtain a [reserve](https://console.cloud.intel.com/compute/myreservations), an a ssh connection
 
 ![Imagen](figures/Intel-IDC-conection2instance.png)
 
-# Ejemplos
+# Examples
 
 ## helloWorld
-1. En este [ejemplo](helloWorld/main.cpp) vamos a ver como se selecciona un dispositivo
-2. Como se elige el dispositivo: **sycl::device**
-    * Lanzamiento de **kernel** a la *command-queue* asíncrona
+1. In this [example](helloWorld/main.cpp) we are going to understand how a device is selected 
+2. It selects the device we want to use **sycl::device**
+    * The **kernel** is launched to an asynchronous *command-queue*
 
-* La siguiente tabla muestra la nomenclatura para seleccionar y asociar la cola a los dispositivos
+* The following table shows the devices types:
 
 |   |   |
 |---|---|
@@ -231,10 +231,10 @@ user@localhost:~$ ssh myidc -L 8888:10.10.10.8:8888
 |*my\_device\_selector*   | *Custom selector*                                            | 
 
 
-* El siguiente [código](helloWorld/main.cpp) disponible en el directorio [helloWorld](helloWorld/) muestra un ejemplo de selección, donde
-    * La línea ```d = sycl::device(sycl::gpu_selector_v)``` seleccione el dispositivo
-    * La clase ```d.get_info``` devuelve informacion asociada al dispositivo
-    * el ```single_task``` escribe en la salida la cadena "Hello, World!", que está asociada a la ejecución en el **dispositivo seleccionado**
+* The [source code](helloWorld/main.cpp) located in the directory [helloWorld](helloWorld/) shown the selection example, where
+    * The line ```d = sycl::device(sycl::gpu_selector_v)``` selects the device
+    * The class ```d.get_info``` return some features of the device
+    * The ```single_task``` writes the output string "Hello, World!", which is associated to the execution on the **device selected**
 
 
 ```c
@@ -263,8 +263,8 @@ int main(int argc, char **argv) {
 
 ```
 
-* Para compilar los código existe un fichero [Makefile](helloWorld/Makefile) que invocando **make** en consola genera el ejecutable **exec**
-   * Se puede elegir el dispositivo mediante la variable de entorno *ONEAPI_DEVICE_SELECTOR* con los dispositivos disponibles con el comando ```sycl-ls```
+* The compilation is done with the [Makefile](helloWorld/Makefile), writing **make** in the console and execution the **exec**
+   * You can choose the device by modifying the value of the environmental variable  *ONEAPI_DEVICE_SELECTOR* to select the available devices shown with the command ```sycl-ls```
 
 ```bash
 user@host:~/ $ make
@@ -293,12 +293,12 @@ Hello, World!
 ```
 
 ### ToDo
-* Se recomienda experimentar con el cambio de **selector** para seleccionar CPU/GPU...
+* You can experiment with the **selection** of devices such as CPU/GPU.
 
 
-## Suma de vectores
-* El siguiente [ejemplo](vector_add/vector_add.cpp) ilustra el código de suma de vectores $C_{i} = A_{i}+B_{i}$
-    * El alumno deberá de completar el código que aparece con el texto **TODO** 
+## Adding vector
+* The next [example](vector_add/vector_add.cpp) illustrates the the vector adding vector $C_{i} = A_{i}+B_{i}$
+    * Any user should complete the source code, in particular the lines marked with **TODO** 
 
 
 ```c
@@ -327,39 +327,41 @@ free(c, Q);
 ```
 
 ### ToDo
-1. Rellenar la reserva de memoria de *a*, *b* y *c* empleando el esquema de USM
-2. Además se debe de codificar el kernel de suma de vectores dentro del **Q.submit**
+1. Fill the memory allocation for the arrays *a*, *b* y *c* using the USM mechanism
+2. Moreover, user should code the add vector kernel that is inside the region **Q.submit**
 
-## Migración de CUDA a SYCL
-* La herramienta de compatibilidad DPCT (DPC++  Compatibility Tool) ayuda a los desarrolladores a migrar código escrito en [CUDA a DPC++](https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html), generando código legible siempre que sea posible
-    * El 90-95% del código se migra automáticamente
-* Proporciona comentarios para ayudar a los desarrolladores a completar la migración
-* Más info DPCT
-    * Consulta la [guía y referencia](https://www.intel.com/content/www/us/en/docs/dpcpp-compatibility-tool/developer-guide-reference/2023-2/overview.html)
-    * Visita la [Release Notes](https://software.intel.com/content/www/us/en/develop/articles/release-notes-for-intel-dpcpp-compatibility-tool.html) para encontrar información más actualizada
+## CUDA to SYCL migration
+* The example of the SYCL CUDA Migration program illustrates how to migrate code from CUDA vs SY Routine.
+* The Tool DPCT (DPC++  Compatibility Tool) assists developers in migrating code written in [CUDA a DPC++](https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compatibility-tool.html), generating readable code whenever possible.
+    * 90-95% of the code is automatically migrated
+* Provides feedback to help developers complete the migration.
+* More Information on DPCT:
+    * Check [guide and reference guide](https://www.intel.com/content/www/us/en/docs/dpcpp-compatibility-tool/developer-guide-reference/2023-2/overview.html)
+    * Visit the [Release Notes](https://software.intel.com/content/www/us/en/develop/articles/release-notes-for-intel-dpcpp-compatibility-tool.html) for the latest information
 
-### Pasos
-1. Preparar la fuente CUDA para la migración
-    * La herramienta de compatibilidad DPCT busca encabezados CUDA
-2. Migración del proyecto: **ejecución del herramienta compatibilidad**
-    * Para proyectos simples, migración de archivo a archivo
-    * Para proyectos complejos, se puede usar un proyecto de Microsoft Visual Studio o el archivo Make/Cmake para crear una base de datos de compilación
-3. Revisar código convertido
-    * Los archivos de salida contienen [anotaciones](https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html) para ayudar a migrar cualquier código restante que no se haya podido migrar automáticamente
-4. Compiladado con Intel® oneAPI DPC++/C++
+### Steps
+1. Prepare the CUDA source for migration:
+    * The DPCT/SYCLomatic compatibility tool searches for CUDA headers
+2. Project migration: **execution of the compatibility tool**
+    * For simple projects, migrate file by file
+    * For complex projects (Microsoft Visual Studio project or Make/Cmake) is recommendable to build database
+3. Review converted code:
+    * Output files contain [annotations](https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html) to assist in migrating any remaining code that could not be automatically migrated[^2]
+4. Compilation with Intel® oneAPI DPC++/C++
 
 ![Imagen](figures/dpct-tool.png)
 
-### Requisitos Software
-* Instalación de DPCT (Intel oneAPI Base Toolkit)
-    * Invocación de entorno ```source /opt/intel/oneapi/setvars.sh```
-* Cabeceras de CUDA
+### Software Requirements
+* Installation of [SYCLomatic](https://github.com/oneapi-src/SYCLomatic) or use DPCT/SYCLomatic from the [Intel oneAPI Base Toolkit](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html#gs.0wmv37)
+    * Prepare the environment with \texttt{source /opt/intel/oneapi/setvars.sh}
+* CUDA headers are mandatory
     * /usr/local/cuda/include
-    * /usr/local/cuda-x.y/include, donde x.y deben de ser algunas de las versiones: 8.0, 9.x, 10.1, 10.2, 11.0~11.8, 12.0
+    * /usr/local/cuda-x.y/include, where x.y must be some of the following versions: 8.0, 9.x, 10.1, 10.2, 11.0~11.8, 12.0
 
-### Preparación del Developer Cloud
-1. Descargarse las cabeceras de CUDA con el comando ```git clone --recursive https://gitlab.com/nvidia/headers/cuda.git```
-2. Preparar las cabeceras compactadas en un único directorio:
+
+### Prepare the hands-on in the IDC
+1. Download the CUDA headers with the command ```git clone --recursive https://gitlab.com/nvidia/headers/cuda.git```
+2. Prepare the compacted headers in a single directory:
 ```bash
 uXXXX@idc-beta-batch-head-node:~$ git clone --recursive https://gitlab.com/nvidia/headers/cuda.git
 uXXXX@idc-beta-batch-head-node:~$ mkdir cuda-headers/
@@ -368,17 +370,17 @@ uXXXX@idc-beta-batch-head-node:~$ cp -r cuda/curand/* cuda-headers/
 uXXXX@idc-beta-batch-head-node:~$ cp -r cuda/nvcc/crt/ cuda-headers/
 uXXXX@idc-beta-batch-head-node:~$ cp cuda/cublas/* cuda-headers/
 ```
-### Ejemplo
-* Para ilustrar el funcionamiento de la herramienta DPCT vamos a utilizar el ejemplo de suma de vectores que se puede encontrar en [GitHub](https://github.com/oneapi-src/oneAPI-samples/tree/master/Tools/Migration/vector-add-dpct)
-    * O bien haciendo uso de la herramienta [oneapi-cli](https://www.intel.com/content/www/us/en/docs/oneapi-hpc-toolkit/get-started-guide-linux/2023-2/overview.html) que contiene muchos ejemplos:
+### Example
+* To illustrate the operation of the DPCT tool, we will use the example of vector addition that can be found in [GitHub](https://github.com/oneapi-src/oneAPI-samples/tree/master/Tools/Migration/vector-add-dpct)
+    * O with the tool [oneapi-cli](https://www.intel.com/content/www/us/en/docs/oneapi-hpc-toolkit/get-started-guide-linux/2023-2/overview.html) which include many examples:
         1. "Create a project"
         2. "cpp"
         3. "oneAPI Tools->Migration->Vector Add DPCT"
 
 ![Imagen](figures/oneapi-cli_example.jpg)
 
-* Una vez preparados los códigos de CUDA que se encuentran en la carpeta [DPCT-examples](DPCT-examples/vector-add-dpct/) podemos hacer uso de la herramienta DPCT
-* Vamos a utilizar DPCT con el [único fichero fuente CUDA](DPCT-examples/vector-add-dpct/src/vector_add.cu)
+* The CUDA source codes are located in the folder [DPCT-examples](DPCT-examples/vector-add-dpct/), so it is posssible to use the SYCLomatic tool
+* Let's start to illustrate the migration of [a single CUDA source code](DPCT-examples/vector-add-dpct/src/vector_add.cu)
 ```bash
 uXXXX@idc-beta-batch-pvc-node-04:~$ c2s --cuda-include-path=/home/uXXXX/cuda-headers/ --out-root=. vector-add-dpct/src/vector_add.cu
 NOTE: Could not auto-detect compilation database for file 'vector_add.cu' in '/home/uXXXX/vector-add-dpct/src' or any parent directory.
@@ -391,9 +393,9 @@ See Diagnostics Reference to resolve warnings and complete the migration:
 https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html
 
 ```
-* Nos informa de algunos **warnings** que vienen motivado a la diferencia en la API de CUDA y SYCL. Para más información conviene consultar la información de [**diagnóstico**](https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html) que muestran la correspondencia de los códigos de aviso
+* Some **warnings** commes from the different API among CUDA and SYCL. More info can be found in the [**diagnosis**](https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html) reference that shows the correspondence of the warnings codes
 
-* Ya estamos en capacidad de compilar el código generado con en compilador **icpx** y ejecutarlo:
+* Now, We are now able to compile the code generated with the **icpx** compiler and run it:
 
 ```bash
 uXXXX@idc-beta-batch-pvc-node-04:~$  icpx -o vector vector_add.dp.cpp -fsycl
@@ -418,59 +420,57 @@ uXXXX@idc-beta-batch-pvc-node-04:~$  ./vector
 
 ```
 
-## Entranamiento e Inferencia optimizado en PyTorch
-* Intel incrementa el rendimiento en las CPUs y GPUSs mediante la Extensión 
-* Código abierto en GitHub
-    * [CPU](https://github.com/intel/intel-extension-for-pytorch/tree/cpu-master): Código y [documentación](https://intel.github.io/intel-extension-for-pytorch/cpu/latest/)
-    * [GPU](https://github.com/intel/intel-extension-for-pytorch/tree/xpu-master): Código y [documentación](https://intel.github.io/intel-extension-for-pytorch/xpu/latest/)
+## Training and inference with optimazed PyTorch
+* Intel boosts performance on CPUs and GPUs through the Extension
+* Open-source code available on GitHub
+    * [CPU](https://github.com/intel/intel-extension-for-pytorch/tree/cpu-master): Code and [documentation](https://intel.github.io/intel-extension-for-pytorch/cpu/latest/)
+    * [GPU](https://github.com/intel/intel-extension-for-pytorch/tree/xpu-master): Code and [documentation](https://intel.github.io/intel-extension-for-pytorch/xpu/latest/)
 
 ![Imagen](figures/Intel-Extension-for-PyTorch-structure.png)
 
-* El [cuaderno de Jupyter](ipex/IntelPyTorch_GPU_InferenceOptimization_with_AMP/IntelPyTorch_GPU_InferenceOptimization_with_AMP.ipynb) muestra un ejemplo de entrenamiento de la red [ResNet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html) en PyTorch, pudiendo realizar el entrenamiento en CPU, CPU (AMX), GPU(FP32/BF16)
-     * Se evalua el rendimiento y la precisión del modelo entrenado
-     * NOTA: para ser ejecutado en el Intel Developer Cloud se debe seleccionar en el entorno **pytorch-gpu**
+* The [jupyter notebook](ipex/IntelPyTorch_GPU_InferenceOptimization_with_AMP/IntelPyTorch_GPU_InferenceOptimization_with_AMP.ipynb) shows an exmaple of the [ResNet50](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html) training code in PyTorch, being able to perform the training in different devices: CPU, CPU (AMX), GPU(FP32/BF16)
+     * It evaluates the performance and the precision used in the model
+     * NOTE: to be performed in the Intel Developer Cloud the **pytorch-gpu** environment should be pre-selected
 
 # To-Do
-## Tratamiento de imágenes
-* El siguiente ejemplo ilustra la **reducción de Ruido en una imagen (sal y pimienta)**
+## Image processing
+* The following example shows the processing of **noise reduction in a image (salt and pepper)**
 
 ![Imagen](figures/salt_pepper.png)
 
-
-* Para ello se utiliza el filtro de mediana, en una vecindad de 3x3
-    * Es decir que dado un píxel en la posición de la imagen (i,j), su valor será ```im[i][j]```
-    1. Se guardan los vecina del pixel (i,j) de forma temporal
-    2. Se ordenan los valores de los píxel de la vecindad 3x3: **sort**
-    3. Para obtener el valor de la mitad de la ordenación
-         * Si no se supera un umbral el pixel de salida es equivalente al de la entrada
-         * En caso contrario el pixel resultante sería el valor de la mediana
+* To achieve this, a median filter is used into a 3x3 pixel neighborhood:
+    * Given a pixel at the position (i, j), its value will be ```im[i][j]```
+    1. The neighbors of the pixel (i, j) are temporarily stored
+    2. To achieve the **median value**, the pixels of 3x3 neighborhood are sorted: **sort**
+    3. The **median** correspond to the middle element of the sorting
+        * If a threshold is not exceeded, the output pixel is equivalent to the input pixel
+        * Otherwise, the resulting pixel would be the median value.
 
 ![Image](figures/salt_pepper2.png)
 
-* Compilación: por medio del [*make*](image_salt_pepper/Makefile)
-* Ejecución: **host** y **device**, con el último flag de línea de comandos
+* Compile: using the [*make*](image_salt_pepper/Makefile)
+* Execution: **host** and **device** execution could be control with the last input in the execution command
      * host: ```./main LennaSALTPEPPER.bmp output.bmp h```
      * device: ```./main LennaSALTPEPPER.bmp output.bmp g```
 
 ### ToDo
+* The kernel to be developed can be found at [**kernels.cpp**](image_salt_pepper/kernels.cpp) file
+     * It takes as input the queue *Q*, the input image *im*, the threshold value *threshold*, and the *height* and *width* of the image height, width
+     * The output image is written to **image_out**
+     * The queue selection is done in the file [**main.cpp**](image_salt_pepper/main.cpp), and memory for the input and output images is allocated using the USM mechanism
 
-* El kernel a desarrollar está en el fichero [**kernels.cpp**](image_salt_pepper/kernels.cpp)
-     * Posee como entrada la cola *Q*, imágen de entrada en *im*, valor umbral *thredshold*, alto y ancho de la imagen *height, width*
-     * La imagen de salida se escribe en **image_out**
-     * La selección de la cola se realiza en el fichero [**main.cpp**](image_salt_pepper/main.cpp) y la memoria para la imagen de entrada y salida se reserva mediante el mecanismo de USM
+## Advanced CUDA to SYCL Code Migration (Libraries)
+* The example has been extracted from the [oneAPI-samples](https://github.com/oneapi-src/oneAPI-samples/tree/master/DirectProgramming/C%2B%2BSYCL/DenseLinearAlgebra/guided_matrix_mul_SYCLMigration) which explores the use of SYCLomatic with linear algebra libraries such as cuBLAS
+* For this purpose, we will use the matrix multiplication example employing the **matrixMulCUBLAS** available in [CUDA examples](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/4_CUDA_Libraries/matrixMulCUBLAS)
 
-## Migración de código CUDA a SYCL avanzada (librerías)
-* El ejemplo ha sido extraido del repositorio de [oneAPI-samples](https://github.com/oneapi-src/oneAPI-samples/tree/master/DirectProgramming/C%2B%2BSYCL/DenseLinearAlgebra/guided_matrix_mul_SYCLMigration) donde se plantea el uso de DPCT con librerías de álgebra linear como cuBLAS
-* Para ello emplearemos el ejemplo de la multiplicación de matrices haciendo uso del código **matrixMulCUBLAS** disponible en [los ejemplos de CUDA](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/4_CUDA_Libraries/matrixMulCUBLAS)
-
-### Preparación del ejemplo
-1. Descargamos el ejemplo disponible en el [GitHub](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/4_CUDA_Libraries/matrixMulCUBLAS) ```git clone https://github.com/NVIDIA/cuda-samples.git```
-2. Invocamos a la herramienta **Intercerpt-build tool**: ```intercept-build make``` que genera un archivo json con todos los archivos de origen que implican en el proyecto
-3. Invocamos a la herramienta de migración **DPCT** o **SYCLomatic**: ```dpct -p compile_commands.json``` o ```c2s -p compile_commands.json```
-4. Revisamos los mensaje de diagnóstico 
-5. Compilamos el fichero "migrado" teniendo en cuenta que la llamada a **cublasSgemm** ahora es traducida por la llamada **oneapi::mkl::blas::column_major::gemm** de la librería [oneMKL](https://www.intel.com/content/www/us/en/docs/oneapi/programming-guide/2023-0/intel-oneapi-math-kernel-library-onemkl.html)
-    * Para compilar el código generado se necesitan añadir los flags de compilación de oneMKL que pueden consultarse en la herramienta de ayuda ["link-advisor"](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html)
-    * NOTA: Comentar las líneas 91-96 que solicitan conocer el dispositivo porque es algo específico de la API de CUDA
+### Example setup
+1. Download the example from [GitHub](https://github.com/NVIDIA/cuda-samples/tree/master/Samples/4_CUDA_Libraries/matrixMulCUBLAS) ```git clone https://github.com/NVIDIA/cuda-samples.git```
+2. Invoke the **Intercerpt-build tool**: ```intercept-build make``` which generates a JSON file with all the source files involved in the project
+3. Invoke the migration tool **DPCT** or **SYCLomatic**: ```dpct -p compile_commands.json``` or ```c2s -p compile_commands.json```
+4. Review the diagnostic messages
+5. Compile the "migrated" file, considering that the call to **cublasSgemm** is now translated by the function  **oneapi::mkl::blas::column_major::gemm** from the [oneMKL](https://www.intel.com/content/www/us/en/docs/oneapi/programming-guide/2023-0/intel-oneapi-math-kernel-library-onemkl.html)
+    * To compile the generated code, you need to add the compilation flags for oneMKL, which can be found in the ["link-advisor"](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html) tool
+    * NOTE: Comment out lines 91-96 requesting knowledge of the device, as this is specific to the CUDA API
 
 ```bash
 uXXXX@idc-beta-batch-pvc-node-04:~$  git clone https://github.com/NVIDIA/cuda-samples.git
